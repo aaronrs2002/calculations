@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Free financial tool, CSV and ASCII, read bank files" />
+    <meta name="description" content="Free static bank record analyzer. No app to install. Saves data locally only." />
+
+    <title>Calculations</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/brands.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/solid.css" rel="stylesheet" />
+    <!-- Bootstrap CSS-->
+    <link href="https://bootswatch.com/5/spacelab/bootstrap.css" rel="stylesheet" id="themedStyle">
+    <link rel="stylesheet" href="https://aaronrs2002.github.io/black-jack/css/animate.min.css" />
+
+    <link href="https://aaronrs2002.github.io/black-jack/css/shared.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://aaronrs2002.github.io/task-master/css/style.css" />
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJWFFXF8G0"></script>
+    <script>
+        const urlStr = window.location.href;
+        if (urlStr.indexOf("file:///Users/") !== -1 || urlStr.indexOf("exclude") !== -1) {
+            console.log("Not running GA");
+        } else {
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-JJWFFXF8G0');
+        }
+    </script>
+
+</head>
+
+<body class="wLogo">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="http://web-presence.biz/?src=itWebApp" target="_blank"><img
+                    src="https://web-presence.biz/img/MA_Logo.png" class="img-fluid" /></a>
+            <button class="navbar-toggler collapsed" onClick="toggleMobileNav('mobileNav')">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav me-auto mb-2 ml-5 mb-sm-0" id="navLinkTarget">
+
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="list-unstyled">
+                    <li>
+                        <h3>Loan Amortization Calculator</h3>
+                    </li>
+                    <li><label>Loan Total ($)</label>
+                        <input type="text" class="form-control" placeholder="Loan Total" name="loanTotal" />
+                    </li>
+                    <li><label>Annual Interest Rate (%)</label>
+                        <input type="text" class="form-control" placeholder="Annual Interest Rate (%)"
+                            name="annualInterestRate" />
+                    </li>
+                    <li><label>Loan Term (Years)</label>
+                        <input type="text" class="form-control" placeholder="Loan Term (Years)" name="loanTerm" />
+                    </li>
+                    <li><label>Extra Monthly Principal Payment ($)</label>
+                        <input type="text" class="form-control" placeholder="Extra Monthly Principal Payment ($)"
+                            name="extraMonthlyPrinciplePayment" />
+                    </li>
+                    <li><button class="btn btn-success btn-block my-2 py-2" onClick="calculateLoan()">Calculate</button>
+
+                        <hr />
+                    </li>
+                    <li>
+
+                        <div class="results" id="summary" style="display: none;">
+
+                        </div>
+                    </li>
+                    <li>
+                        <div id="schedule"></div>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="hide alert fadeInUp" role="alert" id="globalAlert"></div>
+    <footer class="footer mt-auto py-3 animated fadeInUp">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="btn-group block my-2" role="group" id="gameLinks"></div>
+                </div>
+                <div class="col-md-2 my-2"> <select class="form-control" onChange="changeTheme()" id="themes"></select>
+                </div>
+                <div class="col-md-4" id="socialList">
+                </div>
+                <div class="col-md-2 my-3" id="year"></div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+<script src="https://aaronrs2002.github.io/black-jack/js/footer.js"></script>
+<script src="https://aaronrs2002.github.io/task-master/js/sharedFunctionality.js"></script>
+
+<script src="js/functionality.js"></script>

@@ -7,7 +7,14 @@ const currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: '
 
 function calculateInvestment(annualAmount, annualPercent, years, timing = 'end') {
     const rate = annualPercent / 100;
-    let balance = 0;
+    /*  let balance = 2000000;*/
+    let balance = Number(document.querySelector("input[name='initialInvestment']").value);
+    console.log("(typeof Number(balance): " + (typeof balance) + " - balance: " + balance);
+
+    if ((typeof Number(balance)) !== "number") {
+        globalAlert("alert-warning", "What is your initial investment?");
+        return;
+    }
     const rows = [];
 
     for (let year = 1; year <= years; year++) {

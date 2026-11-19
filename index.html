@@ -57,29 +57,54 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+
+            <div class="btn-group px-0 py-3">
+
+                <button class="btn btn-info active" type="button"
+                    onClick="addExclude('https://aaronrs2002.github.io/financial-categories/');">Analyze Your Finances
+                    by Category</button>
+                <button class="btn btn-info " type="button"
+                    onClick="addExclude('https://aaronrs2002.github.io/budget-app/');">Revenue vs
+                    Income</button>
+                <button class="btn btn-info " type="button"
+                    onClick="addExclude('https://aaronrs2002.github.io/calculations/');">Investing/Loan Calculations
+                </button>
+
+
+                <!--https://aaronrs2002.github.io/calculations/-->
+
+            </div>
+
+
+            <select class="form-control" name="panelToggle" onChange="displayPanel()">
+                <option value="default">Select a Calculator</option>
+                <option value="investmentCalculator">Investment Growth Calculator</option>
+                <option value="loanCalculator">Loan Interest Calculator</option>
+            </select>
+
+            <div class="col-md-12" data-panel="investmentCalculator">
                 <h3>Compound Investment Calculator</h3>
                 <p>Estimate the future value of recurring annual investments with compound growth. Adjust any value to
                     update the results
                     instantly.</p>
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label>Annual investment ($)</label>
                         <input type="number" class="form-control" id="annual" min="0" value="1000"
                             placeholder="Annual investment ($)" />
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label>Average annual return (%)</label>
                         <input type="number" class="form-control" id="rate" min="0" step="0.1" value="8"
                             placeholder="Average annual return (%)" />
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <label>Years invested</label>
                         <input type="number" class="form-control" id="years" min="0" step="0.1" value="8"
                             placeholder="Years invested" />
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                         <label>Contribution timing</label>
                         <select id="timing" class="form-control">
                             <option value="end">End of each year</option>
@@ -87,39 +112,56 @@
                         </select>
                     </div>
 
-
-
                     <div class="col-md-6">
-                        <label>Total contributions</label>
-                        <strong id="invested">$200,000.00</strong>
-                    </div>
-
-                    <div class="col-md-6">
-                        <label>Investment growth</label>
-                        <strong id="growth">$257,619.64</strong>
-                    </div>
-                    <div class="" col-md-12>
-                        <label>Future investment value</label>
-                        <strong id="future">$457,619.64</strong>
+                        <label>Initial Investment</label>
+                        <input type="number" class="form-control" name="initialInvestment"
+                            placeholder="Initial Investment" value="0" onkeyup="updateCalculator()" />
                     </div>
                     <div class="col-md-12">
-                        <div class="bar" aria-label="Contribution versus investment growth">
-                            <div id="contributionBar" style="width: 43.7044%;"></div>
-                            <div id="growthBar" style="width: 56.2956%;"></div>
-                            <div class="legend"><span><i class="swatch"
-                                        style="background:#64748b"></i>Contributions</span><span><i class="swatch"
-                                        style="background:#16a34a"></i>Compound growth</span></div>
+
+                        <div class="card mt-3">
+                            <div class="card-body">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <label>Total contributions</label>
+                                        <strong id="invested">$200,000.00</strong>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label>Investment growth</label>
+                                        <strong id="growth">$257,619.64</strong>
+                                    </div>
+                                    <div class="" col-md-12>
+                                        <label>Future investment value</label>
+                                        <strong id="future">$457,619.64</strong>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="bar" aria-label="Contribution versus investment growth">
+                                            <div id="contributionBar" style="width: 43.7044%;"></div>
+                                            <div id="growthBar" style="width: 56.2956%;"></div>
+                                            <div class="legend"><span><i class="swatch"
+                                                        style="background:#64748b"></i>Contributions</span><span><i
+                                                        class="swatch" style="background:#16a34a"></i>Compound
+                                                    growth</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <button class="btn btn-block btn-success my-2 py-2"
-                            onClick="updateCalculator()">Calculate</button>
-                    </div>
+
+
                     <div class="col-md-12">
                         <h4>Year-by-year breakdown</h4>
 
                         <div class="table-wrap">
-                            <table>
+                            <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
                                         <th>Year</th>
@@ -297,7 +339,7 @@
 
 
 
-            <div class="col-md-12">
+            <div class="col-md-12 hide" data-panel="loanCalculator">
                 <ul class="list-unstyled">
                     <li>
                         <h3>Loan Amortization Calculator</h3>
@@ -321,10 +363,12 @@
                         <hr />
                     </li>
                     <li>
+                        <div class="card my-3">
+                            <div class="card-body" id="summary" style="display: none;">
 
-                        <div class="results" id="summary" style="display: none;">
-
+                            </div>
                         </div>
+
                     </li>
                     <li>
                         <div id="schedule"></div>
@@ -358,3 +402,21 @@
 
 <script src="js/loanCalculator.js"></script>
 <script src="js/investmentCalculator.js"></script>
+<script>
+
+    function displayPanel() {
+
+        let whichPanel = document.querySelector("select[name='panelToggle']").value;
+
+        [].forEach.call(document.querySelectorAll("[data-panel]"), (e) => {
+
+            if (e.dataset.panel !== whichPanel) {
+                e.classList.add("hide");
+            } else {
+                e.classList.remove("hide");
+            }
+
+        });
+
+    }
+</script>

@@ -75,7 +75,7 @@
 
             </div>
             <div class="col-md-12">
-                <select class="form-control" name="panelToggle" onChange="displayPanel()">
+                <select class="form-control my-3" name="panelToggle" onChange="displayPanel()">
                     <option value="default">Select a Calculator</option>
                     <option value="investmentCalculator">Investment Growth Calculator</option>
                     <option value="loanCalculator">Loan Interest Calculator</option>
@@ -87,68 +87,67 @@
 
 
             <div class="col-md-12" data-panel="investmentCalculator">
-                <div class="row">
-
-                    <div class="card">
 
 
-                        <div class="card-body">
+                <div class="card">
 
 
-                            <div class="row">
-                                <div class="col-md-12">
-
-                                    <h3>Compound Investment Calculator</h3>
-                                    <p>Estimate the future value of recurring annual investments with compound growth.
-                                        Adjust any value
-                                        to
-                                        update the results
-                                        instantly.</p>
+                    <div class="card-body">
 
 
-                                </div>
+                        <div class="row">
+                            <div class="col-md-12">
 
-                                <div class="col-md-4">
-                                    <label>Annual investment ($)</label>
-                                    <input type="number" class="form-control" id="annual" min="0" value="1000"
-                                        placeholder="Annual investment ($)" />
-                                </div>
-                                <div class="col-md-4">
-                                    <label>Average annual return (%)</label>
-                                    <input type="number" class="form-control" id="rate" min="0" step="0.1" value="8"
-                                        placeholder="Average annual return (%)" />
-                                </div>
-                                <div class="col-md-4">
-                                    <label>Years invested</label>
-                                    <input type="number" class="form-control" id="years" min="0" step="0.1" value="8"
-                                        placeholder="Years invested" />
-                                </div>
+                                <h3>Compound Investment Calculator</h3>
+                                <p>Estimate the future value of recurring annual investments with compound growth.
+                                    Adjust any value
+                                    to
+                                    update the results
+                                    instantly.</p>
 
-                                <div class="col-md-6">
-                                    <label>Contribution timing</label>
-                                    <select id="timing" class="form-control">
-                                        <option value="end">End of each year</option>
-                                        <option value="beginning">Beginning of each year</option>
-                                    </select>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <label>Initial Investment</label>
-                                    <input type="number" class="form-control" name="initialInvestment"
-                                        placeholder="Initial Investment" value="0" onkeyup="updateCalculator()" />
-                                </div>
                             </div>
 
+                            <div class="col-md-4">
+                                <label>Annual investment ($)</label>
+                                <input type="number" class="form-control" id="annual" min="0" value="1000"
+                                    placeholder="Annual investment ($)" />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Average annual return (%)</label>
+                                <input type="number" class="form-control" id="rate" min="0" step="0.1" value="8"
+                                    placeholder="Average annual return (%)" />
+                            </div>
+                            <div class="col-md-4">
+                                <label>Years invested</label>
+                                <input type="number" class="form-control" id="years" min="0" step="0.1" value="8"
+                                    placeholder="Years invested" />
+                            </div>
 
+                            <div class="col-md-6">
+                                <label>Contribution timing</label>
+                                <select id="timing" class="form-control">
+                                    <option value="end">End of each year</option>
+                                    <option value="beginning">Beginning of each year</option>
+                                </select>
+                            </div>
 
+                            <div class="col-md-6">
+                                <label>Initial Investment</label>
+                                <input type="number" class="form-control" name="initialInvestment"
+                                    placeholder="Initial Investment" value="0" onkeyup="updateCalculator()" />
+                            </div>
                         </div>
+
+
+
                     </div>
-
-
-
                 </div>
-            </div>
-            <div class="col-md-12">
+
+
+
+
+
 
 
 
@@ -372,40 +371,51 @@
 
 
         <div class="col-md-12 hide" data-panel="loanCalculator">
-            <ul class="list-unstyled">
-                <li>
-                    <h3>Loan Amortization Calculator</h3>
-                </li>
-                <li><label>Loan Total ($)</label>
-                    <input type="text" class="form-control" placeholder="Loan Total" name="loanTotal" />
-                </li>
-                <li><label>Annual Interest Rate (%)</label>
-                    <input type="text" class="form-control" placeholder="Annual Interest Rate (%)"
-                        name="annualInterestRate" />
-                </li>
-                <li><label>Loan Term (Years)</label>
-                    <input type="text" class="form-control" placeholder="Loan Term (Years)" name="loanTerm" />
-                </li>
-                <li><label>Extra Monthly Principal Payment ($)</label>
-                    <input type="text" class="form-control" placeholder="Extra Monthly Principal Payment ($)"
-                        name="extraMonthlyPrinciplePayment" />
-                </li>
-                <li><button class="btn btn-success btn-block my-2 py-2" onClick="calculateLoan()">Calculate</button>
 
-                    <hr />
-                </li>
-                <li>
-                    <div class="card my-3">
-                        <div class="card-body" id="summary" style="display: none;">
+            <div class="card">
 
-                        </div>
-                    </div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li>
+                            <h3>Loan Amortization Calculator</h3>
+                        </li>
+                        <li><label>Loan Total ($)</label>
+                            <input type="text" class="form-control" placeholder="Loan Total" name="loanTotal" />
+                        </li>
+                        <li><label>Annual Interest Rate (%)</label>
+                            <input type="text" class="form-control" placeholder="Annual Interest Rate (%)"
+                                name="annualInterestRate" />
+                        </li>
+                        <li><label>Loan Term (Years)</label>
+                            <input type="text" class="form-control" placeholder="Loan Term (Years)" name="loanTerm" />
+                        </li>
+                        <li><label>Extra Monthly Principal Payment ($)</label>
+                            <input type="text" class="form-control" placeholder="Extra Monthly Principal Payment ($)"
+                                name="extraMonthlyPrinciplePayment" />
+                        </li>
+                        <li><button class="btn btn-success btn-block my-2 py-2"
+                                onClick="calculateLoan()">Calculate</button>
 
-                </li>
-                <li>
-                    <div id="schedule"></div>
-                </li>
-            </ul>
+                            <hr />
+                        </li>
+                        <li>
+                            <div class="card my-3">
+                                <div class="card-body" id="summary" style="display: none;">
+
+                                </div>
+                            </div>
+
+                        </li>
+                        <li>
+                            <div id="schedule"></div>
+                        </li>
+                    </ul>
+
+
+                </div>
+
+
+            </div>
 
         </div>
     </div>
